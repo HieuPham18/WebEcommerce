@@ -1,0 +1,41 @@
+.slider-banner {
+    margin-top: 50px;
+    // box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.slider-item {
+    border-radius: 10px;
+}
+
+.slider-item-img {
+    border-radius: 10px;
+    //  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
+}
+
+.slick-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 20px;
+    color: #888;
+    border: none;
+    z-index: 2;
+    padding: 12px 16px;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.slick-next {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    margin-right: 20px;
+    color: #888;
+    border: none;
+    z-index: 2;
+    padding: 12px 16px;
+    border-radius: 50%;
+    opacity: 0.6;
+}

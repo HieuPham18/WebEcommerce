@@ -1,0 +1,40 @@
+
+.introduce-company-info {
+    margin-top: 50px;
+}
+
+.introduce-heading {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.introduction-general {
+    margin-top: 40px;
+}
+
+.introduction-general>h2,
+.milestone>h2,
+.regulation>h2,
+.mission>h2 {
+    font-size: 2rem;
+    padding: 12px 0px;
+    color: black;
+}
+
+.introduction-general>p,
+.milestone>p,
+.regulation>p,
+.mission>p,
+.milestone__item {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.milestone__item {
+    margin-left: 50px;
+}
+
+.text-bold {
+    font-weight: bold;
+}

@@ -1,0 +1,30 @@
+
+.banner {
+    margin-top: 30px;
+}
+.quick-sale {
+    display: flex;
+    &-item {
+        width: 25%;
+        margin-right: 5px;
+    }
+    
+    &-item:last-child {
+        margin-right: 0px;
+    }
+    
+    &-img {
+        max-width: 100%;
+    }
+}
+
+
+
+.hot-sale {
+    overflow: hidden;
+}
+
+.hot-sale-banner:hover img {
+    transform: scale(1.08);
+    transition: all 0.2s ease-in-out;
+}

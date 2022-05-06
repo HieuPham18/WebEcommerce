@@ -1,0 +1,29 @@
+
+.plash-sale__item {
+    text-align: center;
+    text-decoration: none;
+}
+
+.plash-sale-container {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 8px;
+    padding: 12px 12px;
+    padding-bottom: 32px;
+    background-color: white;
+}
+
+.product-flash-sale-img{
+  display: flex;
+  margin:0 auto;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #00483d;
+  }
+  
+  .slick-prev:before,
+  .slick-next:before {
+    color: #ccc;
+    font-size: 24px;
+  }
+  

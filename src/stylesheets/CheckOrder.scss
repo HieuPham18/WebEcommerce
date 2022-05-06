@@ -1,0 +1,58 @@
+
+.guarantee,
+.check-order {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.guarantee-input,
+.check-order-input {
+    margin-top: 20px;
+}
+
+.guarantee-form,
+.check-order-form {
+    background-color: #e5e5e5;
+    margin-top: 20px;
+    padding: 10px 24px;
+    max-width: 500px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+}
+
+.btn-search-check-order {
+    margin-top: 20px;
+    background-image: linear-gradient(#00917a, #00483d);
+    width: 150px;
+    padding: 12px 0;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.check-order-input {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.btn-search {
+    background-image: linear-gradient(#00917a, #00483d);
+    padding: 10px 16px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    position: relative;
+    right: 50px;
+    cursor: pointer;
+}
+
+.icon-search {
+    color: #fff;
+    font-size: 1.4rem;
+}
+

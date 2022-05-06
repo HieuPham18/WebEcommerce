@@ -1,0 +1,90 @@
+.admin-test {
+    display: flex;
+}
+
+.sub-menu-admin {
+    width: 280px;
+    background-color: #00483d;
+    height: 100vh;
+}
+
+.content-admin {
+    width: 100%;
+}
+
+
+.header-menu-admin {
+    display: flex;
+    padding: 12px 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.input-admin {
+    background-color: rgba(235, 231, 233, 0.8);
+    padding: 10px;
+    width: 400px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.input-admin:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+
+}
+
+.sub-menu-admin-item {
+    display: flex;
+    align-items: center;
+    margin: 4px 0px;
+    padding: 12px 24px;
+    color: #ccc;
+    font-size: 16px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.sub-menu-admin-item:hover {
+    color: white;
+    background: linear-gradient(90deg, rgba(59, 125, 221, .1), rgba(59, 125, 221, .088) 50%, transparent);
+    border-left-style: solid;
+    border-left-color: #fff;
+}
+
+.sub-menu-admin-list {
+    margin-top: 30px;
+}
+
+.sub-menu-admin-icon {
+    font-size: 16px;
+    padding-right: 12px;
+}
+
+.admin-heading{
+    width: 100%;
+    display: flex;
+    padding: 0 10px;
+    justify-content: space-between;
+    margin: 10px 0px;
+    // margin-left: 8px;
+}
+
+.admin-heading-left,
+.admin-heading-right{
+    display: flex;
+    align-items: flex-end;
+}
+
+.add-product {
+    cursor: pointer;
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    // width: 60px;
+    // height: 60px;
+    // background-color: #ff0080;
+    // border-radius: 50%;
+    // -moz-border-radius: 50%;
+    // -webkit-border-radius: 50%;
+}

@@ -1,0 +1,69 @@
+.footer {
+    background-color: #00483d;
+    margin-top: 100px;
+
+    &__content {
+        margin-top: 0;
+    }
+    
+    &__heading {
+        margin-top: 24px;
+        color: #ccc;
+        font-size: 1.5rem;
+        padding-bottom: 20px;
+    }
+    
+    &__list {
+        padding-left: 0;
+        color: #ccc;
+    }
+    
+    &__item {
+        list-style: none;
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin-bottom: 4px;
+    }
+    
+    &__item:hover {
+        color: #fff;
+    }
+    
+    &__hotline {
+        display: inline-block;
+        font-size: 1.4rem;
+        color: #00483d;
+        padding: 8px 24px;
+        background-color: #ccc;
+        border-radius: 5px;
+        &:hover {
+            background-color: white;
+        }
+    }
+    
+    
+    &__info {
+        text-align: center;
+        font-size: 1.1rem;
+        color: #eee;
+    }
+    
+    &__list-market {
+        text-decoration: none;
+        color: #ccc;
+        font-size: 1.2rem;
+        &:hover {
+            color: #fff;
+        }
+    }
+    
+    &__info>p {
+        padding: 2px 0px;
+    }
+    
+    &__place {
+        margin-top: 80px;
+    }
+}
+
+

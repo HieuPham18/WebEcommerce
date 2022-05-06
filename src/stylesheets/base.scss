@@ -1,0 +1,373 @@
+/* Set up dafaut */
+
+:root {
+    --while-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --height-header: 120px;
+    --height-navbar: 38px;
+    --height-header-with-search: calc(var(--height-header) - var(--height-navbar));
+}
+
+* {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+html {
+    /* Hack */
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.top-auto {
+    margin-top: 0;
+}
+
+// hot 
+.product-flash-sale-title {
+    color: #fc521d;
+    font-size: 2.4rem;
+    padding: 16px 0px;
+}
+
+.product-flash-sale__list,
+.product-smart-watch__list,
+.product-head-phone__list {
+    display: flex;
+    padding-left: 0;
+    background-color: #fff;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 5px #888888;
+    /* width: 1200px;
+    width: 100%; */
+}
+
+.product-flash-sale__item,
+.product-hot__item,
+.product-flash-sale__item,
+.product-flash-sale__item {
+    list-style: none;
+    text-align: center;
+    // padding: 0px 16px;
+}
+
+.product-flash-sale-link,
+.product-hot-link,
+.product-smart-watch-link,
+.product-head-phone-link {
+    text-decoration: none;
+}
+
+.product-flash-sale-link {
+    position: relative;
+}
+
+.product-flast-sale {
+    position: absolute;
+    top: 12px;
+    left: -12px;
+}
+
+.product-flash-sale-name,
+.product-hot-name,
+.product-laptop-name,
+.product-smart-watch-name,
+.product-head-phone-name {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.5;
+    padding: 0px 6px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.product-flash-sale-name:hover,
+.product-hot-name:hover,
+.product-laptop-name:hover,
+.product-smart-watch-name:hover,
+.product-head-phone-name:hover {
+    color: #009981;
+}
+
+.product-flash-sale-current-price,
+.product-hot-current-price,
+.product-laptop-current-price,
+.product-smart-watch-current-price,
+.product-head-phone-current-price {
+    color: #fd475a;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 6px;
+}
+
+.product-flash-sale-old-price,
+.product-hot-old-price,
+.product-laptop-old-price,
+.product-smart-watch-old-price,
+.product-head-phone-old-price {
+    padding-left: 8px;
+    color: #333;
+    font-size: 1.4rem;
+    text-decoration: line-through;
+    font-weight: 300;
+}
+.product-hot-title,
+.product-laptop-title,
+.product-smart-watch-title,
+.product-head-phone-title,
+.review-title {
+    margin-top: 30px;
+    margin-left: 0;
+    color: #fff;
+    background-color: #00483d;
+    padding: 10px 16px;
+    max-width: 300px;
+    text-align: center;
+    font-weight: 500;
+    position: relative;
+}
+.product__hot {
+    margin-top: 15px;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.product-hot-title,
+.product-laptop-title,
+.product-smart-watch-title,
+.product-head-phone-title {
+    margin-top: 30px;
+    margin-left: 0;
+    color: #fff;
+    background-color: #00483d;
+    padding: 10px 16px;
+    max-width: 300px;
+    text-align: center;
+    font-weight: 500;
+    position: relative;
+}
+
+.product-hot-title::before
+/* .product-laptop-title::before,
+.product-smart-watch-title::before,
+.product-head-phone-title::before */
+
+{
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-top: 3px solid transparent;
+    border-left: 3px solid transparent;
+    box-sizing: border-box;
+    transition: all 0.6s ease-in-out;
+}
+
+.product-hot-title::after
+/* .product-laptop-title::after,
+.product-smart-watch-title::after,
+.product-head-phone-title::after */
+
+{
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    border-right: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    box-sizing: border-box;
+    transition: all 0.6s ease-in-out;
+}
+
+.product-hot-title:hover::before
+/* .product-laptop-title:hover::before,
+.product-smart-watch-title:hover::before,
+.product-head-phone-:hover::before */
+
+{
+    width: 100%;
+    height: 100%;
+    border-top: 3px solid #06c208;
+    border-left: 3px solid #06c208;
+}
+
+.product-hot-title:hover::after
+/* .product-laptop-title:hover::after,
+.product-smart-watch-title:hover::after,
+.product-head-phone-title:hover::after */
+
+{
+    width: 100%;
+    height: 100%;
+    border-right: 3px solid #06c208;
+    border-bottom: 3px solid #06c208;
+}
+
+.product-hot__item,
+.product-laptop__item {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-right: 0px;
+    /* background-color: #fff; */
+}
+
+.product-hot-link,
+.product-laptop-link {
+    display: block;
+    background-color: white;
+    box-shadow: 0 2px 5px #888;
+    border-radius: 5px;
+    padding: 8px 0px;
+    text-decoration: none;
+    position: relative;
+}
+
+.product-hot-link::after,
+.product-laptop-link::after {
+    content: "";
+    width: 0;
+    height: 3px;
+    background-color: #009981;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.product-hot-link::before,
+.product-laptop-link::before {
+    content: "";
+    width: 0px;
+    height: 3px;
+    background-color: #009981;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.product-hot-link:hover img {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+.product-hot-link:hover::after,
+.product-hot-link:hover::before,
+.product-laptop-link:hover::after,
+.product-laptop-link:hover::before {
+    width: 100%;
+    transform: translateX(0);
+}
+
+.product-hot-current-price,
+.product-hot-old-price,
+.product-laptop-current-price,
+.product-laptop-old-price {
+    margin-top: 2px;
+    cursor: text;
+}
+
+.product-hot__item-action {
+    display: flex;
+    margin-top: 12px;
+    padding: 0px 16px;
+    align-items: center;
+}
+
+.product-hot__item-like {
+    font-size: 1.4rem;
+    color: red;
+    flex: 1;
+    text-align: left;
+}
+
+.product-hot__item-rating {
+    font-size: 1.2rem;
+    color: rgb(230, 230, 7);
+}
+
+.product-hot__item-bought,
+.product-laptop__item-bought {
+    color: var(--text-color);
+    margin-left: 5px;
+    font-size: 1.1rem;
+}
+
+
+//h
+
+.product-item-authentic {
+    position: absolute;
+    top: 8px;
+    left: -6px;
+    background-color: #e10000;
+    padding: 2px 6px;
+    display: inline-block;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.product-item-authentic::after {
+    position: absolute;
+    top: 99%;
+    left: 0;
+    content: "";
+    border-top: 5px solid #990000;
+    border-left: 5px solid transparent;
+}
+
+.product-item-sale-student {
+    max-width: 180px;
+    position: absolute;
+    top: 60%;
+    left: 10%;
+    background-color: #00483D;
+    padding: 2px 12px;
+    border-radius: 20px;
+}
+
+.product-item-sale-student-text {
+    /* font-size: 1.3rem; */
+    color: #fff;
+}
+
+.product-item-sale-student-price {
+    color: yellow;
+}
+
+.product-item-authentic-icon,
+.product-item-authentic-text {
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.product-hot-sale {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
