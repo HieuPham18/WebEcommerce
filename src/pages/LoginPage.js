@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useUserAuth } from "../context/UserAuthContext"
 import isEmpty from 'validator/es/lib/isEmpty';
 import Header from "../components/Header";
@@ -16,7 +16,9 @@ function LoginPage() {
     const [error, setError] = useState('')
     const [messageErorr, setMessageError] = useState('')
     const { logIn } = useUserAuth()
+    const location = useLocation()
 
+    console.log('loca', location.pathname)
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -44,7 +46,12 @@ function LoginPage() {
             await logIn(email, password)
             toast.success("Đăng nhập thành công!!")
             setTimeout(() => {
-                navigate("/")
+                if(location.pathname === '/login'){
+                    navigate("/")
+                }
+                else if(location.pathname === '/admin'){
+                    navigate("/admin")
+                }
             }, 1000);
         } catch (error) {
             setError(error.message)

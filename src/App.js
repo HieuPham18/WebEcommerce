@@ -21,11 +21,12 @@ import CategorySlug from './components/CategorySlug';
 import CheckoutPageLayout from './layouts/CheckoutPageLayout';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
-import './stylesheets/responsive.scss'
 import SlidePage from './pages/slidePage';
 import MiniDrawer from './pages/test'
 import AdminUpdate from './components/AdminUpdate'
 import AdminProducts from './components/AdminProducts'
+import AdminDashBoad from './components/AdminDashboad'
+import './stylesheets/responsive.scss'
 
 function App() {
   return (

@@ -18,7 +18,7 @@ import '../stylesheets/grid.scss'
 import '../stylesheets/base.scss'
 
 const apiProduct = 'https://webecommerceapi.herokuapp.com/products'
-function AdminProducts({ searchProduct }) {
+function AdminProducts({ searchProduct, title }) {
     const { products } = useContext(dataContext)
 
     const [outputs, setOutputs] = useState([])
@@ -145,11 +145,14 @@ function AdminProducts({ searchProduct }) {
                     {/* Heading component */}
                     <div className='admin-heading'>
                         <div className='admin-heading-left'>
-                            <CottageIcon sx={{ fontSize: 24 }} />
+                            <CottageIcon sx={{ fontSize: 24, color: '#00483d'}} />
                             <h2>Admin</h2>
                             <ArrowRightIcon sx={{ fontSize: 16 }} />
-                            <h2 style={{ textAlign: 'center', fontWeight: 600 }}>
-                                Thông tin sản phẩm
+                            <h2 style={{ textAlign: 'center', fontWeight: 600, color:'green' }}>
+                                {
+                                    title == 'products' ? "Thông tin sản phẩm" : ''
+                                }
+                
                             </h2>
                         </div>
                         <div className='admin-heading-right'>
