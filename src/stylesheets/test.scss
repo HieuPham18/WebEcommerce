@@ -64,10 +64,9 @@
 .admin-heading{
     width: 100%;
     display: flex;
-    padding: 0 10px;
+    // padding: 0 10px;
     justify-content: space-between;
     margin: 10px 0px;
-    // margin-left: 8px;
 }
 
 .admin-heading-left,
@@ -79,7 +78,7 @@
 .add-product {
     cursor: pointer;
     position: fixed;
-    right: 40px;
+    right: 110px;
     bottom: 40px;
     // width: 60px;
     // height: 60px;

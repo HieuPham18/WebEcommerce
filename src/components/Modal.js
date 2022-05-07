@@ -137,6 +137,13 @@ function Modal(props) {
         setStateAProduct(respone.data)
     }
 
+    const handeClose = () => {
+        props.resetID()
+        props.resetEditProduct()
+        setStateAProduct(initialFielaValue)
+        props.closeModal()
+    }
+
     return (
         <div className="modal">
             <div className="wrap">
@@ -299,7 +306,7 @@ function Modal(props) {
                     </div>
 
                 </form>
-                <p onClick={() => props.closeModal()}
+                <p onClick={handeClose}
                     style={{ color: '#FF8C00', cursor: 'pointer', fontSize: 14, fontStyle: 'italic', textDecoration: 'underline' }}
                 >
                     Quay lại

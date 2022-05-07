@@ -24,6 +24,8 @@ import OrderHistoryPage from './pages/OrderHistoryPage';
 import './stylesheets/responsive.scss'
 import SlidePage from './pages/slidePage';
 import MiniDrawer from './pages/test'
+import AdminUpdate from './components/AdminUpdate'
+import AdminProducts from './components/AdminProducts'
 
 function App() {
   return (
@@ -83,10 +85,10 @@ function App() {
 
             <Route path="/test" exact element={
               // <HomePageLayout>
-                <MiniDrawer />
+              <MiniDrawer />
               // </HomePageLayout>
             }
-            />  
+            />
 
             <Route path="/checkout" exact element={
               <CheckoutPageLayout>
@@ -112,6 +114,11 @@ function App() {
             <Route path="/admin" exact element={
               <AdminPage />
             } />
+
+            <Route path="/admin/:slugAdmin" exact element={
+              <AdminPage />
+            } />
+
             <Route path="/history-order" exact element={
               <OrderHistoryPage />
             } />
