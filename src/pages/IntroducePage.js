@@ -9,18 +9,18 @@ function IntroducePage(){
             <div className="col l-12">
                 <div className="introduce-company-info">
                     <h1 className="introduce-heading">
-                        Giới thiệu Hiếu Mobile
+                        Giới thiệu Hoàng Hà Mobile
                     </h1>
                     <div className="introduction-general">
                         <h2 className="introduction-general-heading">
                             Giới thiệu chung
                         </h2>
                         <p className="introduction-general-text">
-                            Công ty Cổ phần Xây dựng và Đầu tư thương mại Hiếu sở hữu chuỗi cửa hàng Hoàng
+                            Công ty Cổ phần Xây dựng và Đầu tư thương mại Hoàng Hà sở hữu chuỗi cửa hàng Hoàng
                             Hà
                             Mobile - là nhà bán lẻ hàng đầu, chuyên cung cấp các sản phẩm công nghệ chính hãng
                             tại
-                            thị trường Việt Nam. Năm 1996, Hiếu Mobile được thành lập, từng bước trở thành
+                            thị trường Việt Nam. Năm 1996, Hoàng Hà Mobile được thành lập, từng bước trở thành
                             địa
                             chỉ đáng tin cậy của người tiêu dùng Việt. Với khẩu hiệu <i>“Nếu những gì chúng tôi
                                 không
@@ -32,7 +32,7 @@ function IntroducePage(){
                             quý khách hàng.
                         </p>
                         <br/>
-                        <p className="introduction-general-text">Sau hơn 20 năm phát triển, Hiếu Mobile đã trở
+                        <p className="introduction-general-text">Sau hơn 20 năm phát triển, Hoàng Hà Mobile đã trở
                             thành
                             cái tên không còn xa lạ với người
                             tiêu dùng trong nước. Hiện nay chúng tôi đang sở hữu mạng lưới hơn 60 chi nhánh phủ
@@ -51,41 +51,41 @@ function IntroducePage(){
                         <h2 className="milestone-heading">Cột mốc quan trọng</h2>
                         <ul className="milestone__list">
                             <li className="milestone__item">
-                                <span className="text-bold">Năm 1996</span>: Thành lập cửa hàng Hiếu Mobile đầu tiên tọa lạc trên con phố sầm
+                                <span className="text-bold">Năm 1996</span>: Thành lập cửa hàng Hoàng Hà Mobile đầu tiên tọa lạc trên con phố sầm
                                 uất
                                 của Thủ đô Hà Nội ở địa chỉ 194 Lê Duẩn.
                             </li>
                             <li className="milestone__item">
-                                <span className="text-bold">Năm 2000</span>: Hiếu Mobile chính thức trở thành nhà phân phối ĐTDĐ chính hãng hợp
+                                <span className="text-bold">Năm 2000</span>: Hoàng Hà Mobile chính thức trở thành nhà phân phối ĐTDĐ chính hãng hợp
                                 tác
                                 với nhiều nhãn hàng lớn hàng đầu như Samsung, OPPO, Nokia, Huawei,...
                             </li>
                             <li className="milestone__item">
-                                <span className="text-bold">Năm 2006</span>: Với kinh nghiệm 10 năm trong lĩnh vực bán lẻ, Hiếu Mobile phát
+                                <span className="text-bold">Năm 2006</span>: Với kinh nghiệm 10 năm trong lĩnh vực bán lẻ, Hoàng Hà Mobile phát
                                 triển
                                 mạnh mẽ và liên tục mở thêm nhiều chi nhánh mới.
                             </li>
                             <li className="milestone__item">
                                 <span className="text-bold">Năm 2016</span>: Kỉ niệm 20 năm hoạt động trong lĩnh vực bán lẻ các sản phẩm công nghệ,
-                                Hiếu Mobile đã khẳng định được chỗ đứng vững chắc trên thị trường cũng như
+                                Hoàng Hà Mobile đã khẳng định được chỗ đứng vững chắc trên thị trường cũng như
                                 trong
                                 tiềm thức người tiêu dùng.
                             </li>
                             <li className="milestone__item">
-                                <span className="text-bold">Năm 2019</span>: Hiếu Mobile chính thức hợp tác với ông lớn ngành viễn thông
+                                <span className="text-bold">Năm 2019</span>: Hoàng Hà Mobile chính thức hợp tác với ông lớn ngành viễn thông
                                 MobiFone
                                 Việt Nam mở chuỗi chi nhánh bán hàng liên kết, nâng tổng số chi nhánh tới hơn
                                 60,
-                                đồng thời phủ khắp 30 tỉnh thành trên cả nước. Kể từ đó, Hiếu Mobile liên
+                                đồng thời phủ khắp 30 tỉnh thành trên cả nước. Kể từ đó, Hoàng Hà Mobile liên
                                 tục
                                 đồng hành cùng MobiFone tổ chức các sự kiện lớn nhỏ.
                             </li>
                             <li className="milestone__item">
-                                <span className="text-bold">Năm 2020</span>: Hiếu Mobile tự hào trở thành nhà bán lẻ ủy quyền chính thức của
+                                <span className="text-bold">Năm 2020</span>: Hoàng Hà Mobile tự hào trở thành nhà bán lẻ ủy quyền chính thức của
                                 Apple
                                 tại Việt Nam. Các sản phẩm Apple chính hãng VN/A do Apple Việt Nam phân phối
                                 được
-                                bán tại hệ thống Hiếu Mobile với mức giá tốt nhất thị trường cùng chế độ bảo
+                                bán tại hệ thống Hoàng Hà Mobile với mức giá tốt nhất thị trường cùng chế độ bảo
                                 hành uy tín.
                             </li>
                         </ul>
@@ -95,16 +95,16 @@ function IntroducePage(){
                             Tôn chỉ hoạt động
                         </h2>
                         <p className="regulation-text">
-                            Hiếu Mobile luôn hoạt động dựa trên tôn chỉ đặt khách hàng là trung tâm, mọi nỗ
+                            Hoàng Hà Mobile luôn hoạt động dựa trên tôn chỉ đặt khách hàng là trung tâm, mọi nỗ
                             lực
                             để đạt được mục tiêu cao nhất là làm hài lòng người dùng thông qua các sản phẩm được
-                            cung cấp và dịch vụ khách hàng. Hiếu Mobile đang từng bước xây dựng dịch vụ
+                            cung cấp và dịch vụ khách hàng. Hoàng Hà Mobile đang từng bước xây dựng dịch vụ
                             khách
                             hàng vượt trội, xứng đáng là đơn vị bán lẻ hàng đầu tại Việt Nam. Sự tin tưởng và
                             ủng hộ
                             nhiệt tình của quý khách hàng tại chuỗi chi nhánh đã phần nào khẳng định hiệu quả
                             hoạt
-                            động của đội ngũ nhân viên Hiếu Mobile.
+                            động của đội ngũ nhân viên Hoàng Hà Mobile.
                         </p>
                         <br/>
                         <p className="regulation-text">
@@ -119,7 +119,7 @@ function IntroducePage(){
                             ty.
                         </p>
                         <p className="regulation-text">
-                            Đối với các đối tác, Hiếu Mobile luôn làm việc dựa trên nguyên tắc tôn trọng,
+                            Đối với các đối tác, Hoàng Hà Mobile luôn làm việc dựa trên nguyên tắc tôn trọng,
                             cùng
                             tạo ra giá trị cho cộng đồng và cùng phát triển bền vững.
                         </p>
@@ -132,23 +132,23 @@ function IntroducePage(){
                         <p className="mission-text">
                             Những năm qua, chúng tôi không ngừng cải thiện dịch vụ tại các chi nhánh và hỗ trợ
                             khách
-                            hàng qua các kênh online. Hiếu Mobile cam kết mang đến những sản phẩm chất lượng
+                            hàng qua các kênh online. Hoàng Hà Mobile cam kết mang đến những sản phẩm chất lượng
                             và
                             chế độ bảo hành uy tín, sẵn sàng hỗ trợ khách hàng trong thời gian nhanh nhất.
                         </p>
                         <br/>
                         <p className="mission-text">
-                            Trong tương lai, Hiếu Mobile sẽ tiếp tục mở rộng hệ thống chi nhánh, hướng tới
+                            Trong tương lai, Hoàng Hà Mobile sẽ tiếp tục mở rộng hệ thống chi nhánh, hướng tới
                             mục
                             tiêu có mặt tại 63 tỉnh thành trên toàn quốc. Đồng thời, nâng cao chất lượng dịch
                             vụ,
                             hạn chế những rủi ro, lắng nghe và tiếp thu góp ý của quý khách hàng nhằm đem đến
                             trải
-                            nghiệm tốt nhất khi mua sắm tại Hiếu Mobile.
+                            nghiệm tốt nhất khi mua sắm tại Hoàng Hà Mobile.
                         </p>
                         <br/>
                         <p className="mission-text">
-                            Cuối cùng, Hiếu Mobile hy vọng sẽ trở thành nhà tiên phong đưa những sản phẩm
+                            Cuối cùng, Hoàng Hà Mobile hy vọng sẽ trở thành nhà tiên phong đưa những sản phẩm
                             công
                             nghệ mới nhất đến tay người dùng sớm nhất, tạo ra cuộc sống hiện đại nơi công nghệ
                             kết

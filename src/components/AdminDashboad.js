@@ -9,11 +9,12 @@ import '../stylesheets/test.scss'
 import '../stylesheets/AdminUpdateLoading.scss'
 import '../stylesheets/AdminDashboad.scss'
 import { Bar } from 'react-chartjs-2'
+import CalendarAdmin from './Calendar'
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
 function AdminDashBoad({ title }) {
- 
+
     return (
         <>
             <div className='admin-heading'>
@@ -117,48 +118,54 @@ function AdminDashBoad({ title }) {
                     </div>
                 </div>
             </div>
-            <div style={{ width: "60%", marginTop: 20 }}>
-                {/* <Bar /> */}
-                <Bar
-                    data={{
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                        datasets: [
-                            {
-                                label: 'Products',
-                                data: [50, 62, 80, 95, 105, 150],
-                                backgroundColor: '#229954',
-                                barThickness: 12
-                            },
-                            {
-                                label: 'Orders',
-                                data: [255, 190, 170, 368, 688, 766],
-                                backgroundColor: '#E67E22',
-                                barThickness: 12
-                            },
-                            {
-                                label: 'Customers',
-                                data: [150, 200, 340, 410, 450, 500],
-                                backgroundColor: '#839192',
-                                barThickness: 12
-                            },
-                        ]
-                    }}
-                    options={{
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: "Statistical chart by month"
-                            },
-                            legend: {
-                                display: true,
-                                position: "bottom"
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <div style={{ width: "60%", marginTop: 20 }}>
+                    {/* <Bar /> */}
+                    <Bar
+                        data={{
+                            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                            datasets: [
+                                {
+                                    label: 'Products',
+                                    data: [50, 62, 80, 95, 105, 150],
+                                    backgroundColor: '#229954',
+                                    barThickness: 12
+                                },
+                                {
+                                    label: 'Orders',
+                                    data: [255, 190, 170, 368, 688, 766],
+                                    backgroundColor: '#E67E22',
+                                    barThickness: 12
+                                },
+                                {
+                                    label: 'Customers',
+                                    data: [150, 200, 340, 410, 450, 500],
+                                    backgroundColor: '#839192',
+                                    barThickness: 12
+                                },
+                            ]
+                        }}
+                        options={{
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: "Statistical chart by month"
+                                },
+                                legend: {
+                                    display: true,
+                                    position: "bottom"
+                                }
                             }
-                        }
-                    }}
-                >
-                </Bar>
-                {/* <Pie /> */}
+                        }}
+                    >
+                    </Bar>
+                    {/* <Pie /> */}
+                </div>
+                <div style={{ width: "40%", marginLeft: 20, marginTop: 50, }}>
+                    <CalendarAdmin />
+                </div>
             </div>
+
         </>
     )
 }
