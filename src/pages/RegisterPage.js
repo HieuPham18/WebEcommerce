@@ -108,7 +108,7 @@ function RegisterPage() {
                                     {
                                         error && <span variant="danger" style={{ color: 'red' }}>{error}</span>
                                     }
-                                    <Link to='/Login' className="link-register">Go to Login</Link>
+                                    <Link to='/login' className="link-register">Go to Login</Link>
                                     {/* <button className="btn button-register" onClick={() => toast.success("Thanh cong r")}>aaaa</button> */}
                                     <ToastContainer position="top-right" />
                                 </div>

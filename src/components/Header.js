@@ -123,16 +123,6 @@ function Header() {
                                                         borderRadius: 50
                                                     }} />
                                                     <span className="header__user__email" style={{ marginLeft: 3, marginRight: 10, fontSize: 11 }}>{user && user.email}</span>
-                                                    {/* <div></div> */}
-                                                    {/* <span
-                                                        className="header__user__logout"
-                                                        title="Đăng xuất"
-                                                        onClick={handleLogOut}
-                                                        style={{ cursor: 'pointer' }}
-                                                    >
-                                                        <i className="fa-solid fa-right-from-bracket"></i>
-                                                    </span> */}
-
                                                     <ul className="sub-menu-user">
                                                         <li className='sub-menu-user-item'>
                                                             <Link to="/history-order" style={{ textDecoration: 'none', color: '#00483d' }}>Lịch sử đơn hàng</Link>

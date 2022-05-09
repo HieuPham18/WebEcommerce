@@ -11,7 +11,6 @@ function Hotproducts() {
     const {products} = useContext(dataContext)
     // const phones = getProducts(10, hotPhones)
 
-
     return (
         <section className="product-hot">
             <h1 className="product-hot-title">ĐIỆN THOẠI NỔI BẬT</h1>

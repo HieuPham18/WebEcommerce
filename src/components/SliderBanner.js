@@ -17,24 +17,7 @@ function SliderBanner() {
         getData(setSliderBanners, collection_slide_banner)
     }, [])
 
-    // Get data from database
-    // const getBannerSlideSale = async () => {
-    //     try {
-    //         const data = await ProductDataService.getAllProducts(collection_name)
-    //         let temp = []
-    //         data.forEach((doc) => {
-    //             const obj = {
-    //                 id: doc.id,
-    //                 ...doc.data(),
-    //             }
-    //             temp.push(obj)
-    //         });
-    //         setSliderBanners(temp)
-    //     } catch (error) {
-    //         console.log(error.message)
-    //     }
-    // }
-
+    
     var settings = {
         dots: true,
         infinite: true,
