@@ -120,7 +120,6 @@ function AdminDashBoad({ title }) {
             </div>
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <div style={{ width: "60%", marginTop: 20 }}>
-                    {/* <Bar /> */}
                     <Bar
                         data={{
                             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
@@ -159,7 +158,6 @@ function AdminDashBoad({ title }) {
                         }}
                     >
                     </Bar>
-                    {/* <Pie /> */}
                 </div>
                 <div style={{ width: "40%", marginLeft: 20, marginTop: 50, }}>
                     <CalendarAdmin />
