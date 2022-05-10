@@ -1,8 +1,6 @@
-import { async } from '@firebase/util';
 import React, { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom"
 import '../stylesheets/base.scss'
 import '../stylesheets/grid.scss'
 import '../stylesheets/Modal.scss'
@@ -30,7 +28,6 @@ function Modal(props) {
     const [selectCategory, setSelectedCategory] = useState('')
     const [selectColor, setSelectColor] = useState([])
     const [selectCapacity, setSelectCapacity] = useState([])
-    let navigate = useNavigate();
 
     const { name, price, categorySlug, slug, category, discount, image: { imgAvt, imgDetal }, colors } = stateAProduct
 

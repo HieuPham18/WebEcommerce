@@ -1,18 +1,15 @@
-import React, { useContext, useEffect, useRef, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import Select from 'react-select'
 import axios from "axios";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-import { async } from "@firebase/util";
-import { useUserAuth } from "../context/UserAuthContext"
 import { dataContext } from "../context/DataContext";
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import Modal from "../components/Modal"
 import numberWithCommas from "../utils/numberWithCommas"
-import fileDB from "../config/firebase"
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import CottageIcon from '@mui/icons-material/Cottage';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import '../stylesheets/AdminProducts.scss'
 import '../stylesheets/grid.scss'
 import '../stylesheets/base.scss'
@@ -25,8 +22,6 @@ function AdminProducts({ searchProduct, title }) {
     const [modal, setModal] = useState(false)
     const [productID, setProductID] = useState(null)
     const [editProduct, setEditProduct] = useState(false)
-    const [productCategory, setProductCategory] = useState()
-    const { user, logOut } = useUserAuth();
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -127,97 +122,86 @@ function AdminProducts({ searchProduct, title }) {
         }
     }
 
-    //* Handle when user click logout
-    const handleLogOut = async () => {
-        try {
-            await logOut();
-            navigate("/login");
-        } catch (error) {
-            console.log(error.message)
-        }
-    }
 
 
     return (
         <>
-            {/* <div className='admin-test'>
-                <div className='content-admin' > */}
-                    {/* Heading component */}
-                    <div className='admin-heading'>
-                        <div className='admin-heading-left'>
-                            <CottageIcon sx={{ fontSize: 24, color: '#00483d'}} />
-                            <h2>Admin</h2>
-                            <ArrowRightIcon sx={{ fontSize: 16 }} />
-                            <h2 style={{ textAlign: 'center', fontWeight: 600, color:'green' }}>
-                                {
-                                    title == 'products' ? "Thông tin sản phẩm" : ''
-                                }
-                
-                            </h2>
-                        </div>
-                        <div className='admin-heading-right'>
-                            {/* <p style={{ fontWeight: 600, marginRight: 8 }}>Lọc sản phẩm: </p> */}
-                            <div>
-                                {/* Filter */}
-                                <Select style={{ display: 'block', width: 200, padding: 2 }} options={options} onChange={(value) => selectInput(value)} />
-                            </div>
-                        </div>
+            <div className='admin-heading'>
+                <div className='admin-heading-left'>
+                    <CottageIcon sx={{ fontSize: 24, color: '#00483d' }} />
+                    <h2>Admin</h2>
+                    <ArrowRightIcon sx={{ fontSize: 16 }} />
+                    <h2 style={{ textAlign: 'center', fontWeight: 600, color: 'green' }}>
+                        {
+                            title === 'products' ? "Thông tin sản phẩm" : ''
+                        }
+
+                    </h2>
+                </div>
+                <div className='admin-heading-right'>
+                    {/* <p style={{ fontWeight: 600, marginRight: 8 }}>Lọc sản phẩm: </p> */}
+                    <div>
+                        {/* Filter */}
+                        <Select style={{ display: 'block', width: 200, padding: 2 }} options={options} onChange={(value) => selectInput(value)} />
                     </div>
-                    {/* Component  */}
-                    <table className="table-product styled-table">
-                        <thead>
-                            <tr>
-                                <th>Ảnh sản phẩm</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Giá</th>
-                                <th>Màu sắc</th>
-                                <th>Phân loại</th>
-                                <th>Tùy chọn</th>
+                </div>
+            </div>
+            {/* Component  */}
+            <table className="table-product styled-table">
+                <thead>
+                    <tr>
+                        <th>Ảnh sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Màu sắc</th>
+                        <th>Phân loại</th>
+                        <th>Tùy chọn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        //Search and render item by name, category
+                        outputs !== undefined && outputs.filter(value => value.name.toLowerCase().includes(searchProduct)).map(product => (
+                            <tr key={product.id}>
+                                <td>
+                                    <img className="product-img" src={product.image.imgAvt} alt="" />
+                                </td>
+                                <td style={{ textAlign: 'left', fontWeight: 600 }}>{product.name}</td>
+                                <td>{numberWithCommas(product.price)} đ</td>
+                                <td>{product.colors.toString()}</td>
+                                <td>{product.category}</td>
+                                <td>
+                                    <div className="product-select-action">
+                                        <div className="product-action-update" onClick={() => handleUpdate(product.id, product.category)} >
+                                            <i className="fa-solid fa-pen"></i>
+                                        </div>
+                                        <div className="product-action-del" onClick={() => handleDelete(product.id, product.category)}>
+                                            <i className="fa-solid fa-trash"></i>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                //Search and render item by name, category
-                                outputs !== undefined && outputs.filter(value => value.name.toLowerCase().includes(searchProduct)).map(product => (
-                                    <tr key={product.id}>
-                                        <td>
-                                            <img className="product-img" src={product.image.imgAvt} />
-                                        </td>
-                                        <td style={{ textAlign: 'left', fontWeight: 600 }}>{product.name}</td>
-                                        <td>{numberWithCommas(product.price)} đ</td>
-                                        <td>{product.colors.toString()}</td>
-                                        <td>{product.category}</td>
-                                        <td>
-                                            <div className="product-select-action">
-                                                <div className="product-action-update" onClick={() => handleUpdate(product.id, product.category)} >
-                                                    <i className="fa-solid fa-pen"></i>
-                                                </div>
-                                                <div className="product-action-del" onClick={() => handleDelete(product.id, product.category)}>
-                                                    <i className="fa-solid fa-trash"></i>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))
-                            }
-                        </tbody>
-                    </table>
-                    <div className='add-product' onClick={openModal}>
-                        <AddCircleIcon color='warning' sx={{ fontSize: 60 }} />
-                    </div>
-                {/* </div> */}
-                {
-                    modal && (
-                        <Modal
-                            loadData={loadData}
-                            productID={productID}
-                            editProduct={editProduct}
-                            resetID={resetID}
-                            resetEditProduct={resetEditProduct}
-                            closeModal={closeModal}
-                        />
-                    )
-                }
+                        ))
+                    }
+                </tbody>
+            </table>
+            <div className='add-product' onClick={openModal}>
+                <AddCircleIcon color='warning' sx={{ fontSize: 60 }} />
+            </div>
+            {/* </div> */}
+            {
+                modal && (
+                    <Modal
+                        loadData={loadData}
+                        productID={productID}
+                        editProduct={editProduct}
+                        resetID={resetID}
+                        resetEditProduct={resetEditProduct}
+                        closeModal={closeModal}
+                    />
+                )
+            }
+            
             {/* // </div> */}
             {/* 
                     {

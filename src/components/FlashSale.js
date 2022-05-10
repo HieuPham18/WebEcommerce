@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import Slider from 'react-slick/lib/slider'
 import { Link } from 'react-router-dom'
 import numberWithCommas from '../utils/numberWithCommas';
 import { dataContext } from '../context/DataContext';
-import { getData, getProducts } from '../data/actionData';
+import { getProducts } from '../data/actionData';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '../stylesheets/base.scss'

@@ -1,5 +1,4 @@
 // slugAdmin
-import { useParams } from 'react-router-dom'
 import CottageIcon from '@mui/icons-material/Cottage';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import '../stylesheets/test.scss'
@@ -15,7 +14,7 @@ function AdminUpdate({ title }) {
                     <ArrowRightIcon sx={{ fontSize: 16 }} />
                     <h2 style={{ textAlign: 'center', fontWeight: 600, color: 'green' }}>
                         {
-                            title == 'dashboad' ? 'Thông tin chung' : title == 'orders' ? 'Đơn hàng' : title == 'customers' ? 'Khách hàng' : title == 'setting' ? 'Cài đặt' : ''
+                            title === 'dashboad' ? 'Thông tin chung' : title === 'orders' ? 'Đơn hàng' : title === 'customers' ? 'Khách hàng' : title === 'setting' ? 'Cài đặt' : ''
                         }
                     </h2>
                 </div>

@@ -1,4 +1,3 @@
-import { map } from '@firebase/util'
 import React, { useEffect, useState } from 'react'
 import { getData } from '../data/actionData'
 import moment from "moment";
@@ -21,6 +20,7 @@ function OrderHistoryPage() {
         getData(setHistoryOrder, collection_order)
     }, [])
 
+    console.log("history", historyOrder)
     return (
         <>
             <Header />
@@ -35,6 +35,7 @@ function OrderHistoryPage() {
                                         <th>ID Đơn hàng</th>
                                         <th>Người nhận</th>
                                         <th>Thời gian</th>
+                                        <th>Địa chỉ</th>
                                         <th>Tổng tiền</th>
                                     </tr>
                                 </thead>
@@ -48,6 +49,7 @@ function OrderHistoryPage() {
                                                     <td>
                                                         {moment(value.orderTime.toDate()).format("DD/MM/YYYY hh:mm:ss a")}
                                                     </td>
+                                                    <td>{value.address}</td>
                                                     <td>{numberWithCommas(value.orderTotal)} đ</td>
                                                 </tr>
                                             )

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useUserAuth } from "../context/UserAuthContext"
 import isEmpty from 'validator/es/lib/isEmpty';
-import Header from "../components/Header";
+import Logo from '../assets/images/logo/logo-text.png'
 import '../stylesheets/grid.scss'
 import '../stylesheets/base.scss'
 import '../stylesheets/LoginPage.scss'
@@ -18,7 +18,7 @@ function LoginPage() {
     const { logIn } = useUserAuth()
     const location = useLocation()
 
-    console.log('loca', location.pathname)
+    // console.log('loca', location.pathname)
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -63,6 +63,17 @@ function LoginPage() {
             {/* <Header /> */}
             <div className="login-page">
                 <div className="grid wide">
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                        <div style={{display: 'flex', alignItems: 'center'}}>
+                            <Link to="/" >
+                                <img src={Logo} />
+                            </Link>
+                            <h2 style={{marginLeft: 12}}>Đăng nhập</h2>
+                        </div>
+                        <div>
+                            <h4 style={{fontWeight: 500, color: 'red'}}>Bạn cần giúp đỡ ?</h4>
+                        </div>
+                    </div>
                     <div className="row alginCenter">
                         <div className="col l-6 m-12 c-12">
                             <div className="image-login" >

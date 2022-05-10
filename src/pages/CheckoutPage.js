@@ -1,23 +1,15 @@
-import { map } from '@firebase/util'
+
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import '../stylesheets/base.scss'
-import '../stylesheets/grid.scss'
-import '../stylesheets/CheckoutPage.scss'
+import { useUserAuth } from '../context/UserAuthContext';
 import { useNavigate } from 'react-router-dom';
 import { addOrderToFirestore } from '../redux/Order/order.action'
-import firebase from "firebase/compat/app";
-import userEvent from '@testing-library/user-event';
-import { useUserAuth } from '../context/UserAuthContext';
-import { async } from '@firebase/util';
-import fileDB from '../config/firebase';
-import { doc, setDoc } from "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore";
-import getData from '../data/actionData'
-import { Link } from "react-router-dom";
 import numberWithCommas from '../utils/numberWithCommas';
 import moment from 'moment'
 import { deleteCart } from '../redux/Cart/cart.action';
+import '../stylesheets/base.scss'
+import '../stylesheets/grid.scss'
+import '../stylesheets/CheckoutPage.scss'
 
 function CheckoutPage() {
     let totalPrice = 0, totalProduct = 0
@@ -28,23 +20,22 @@ function CheckoutPage() {
     const [address, setAddress] = useState('')
     const [note, setNote] = useState('')
     const { cartItems } = useSelector(state => state.cartReducer)
-    const { orderItems } = useSelector(state => state.orderReducer)
-    const { user, logOut } = useUserAuth();
+    const {orders} = useSelector(state => state.orderReducer)
+    const { user } = useUserAuth();
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const collection_name = 'invoice'
 
     useEffect(() => {
         window.scrollTo(0, 0)
-      }, [])
+    }, [])
+
 
     useEffect(() => {
         setNumberProduct(totalProduct)
         setNumberPrice(totalPrice)
     }, [cartItems])
 
-    console.log("card-tem:", cartItems)
-    console.log("order-tem:", orderItems)
 
     const check = () => {
         if (!user) {
@@ -54,14 +45,6 @@ function CheckoutPage() {
         }
         return true;
     };
-
-    const setDatatoFirebase = async (obj) => {
-        try {
-            await addDoc(collection(fileDB, collection_name), obj);
-        } catch (error) {
-
-        }
-    }
 
 
     const handleOnSubmit = (e) => {
@@ -87,21 +70,23 @@ function CheckoutPage() {
                     const price = item.productInfo.price
                     const color = item.color
                     const capacity = item.capacity
+                    const img = item.productInfo.image.imgAvt
+                    const quantity = item.quantity
                     return {
+                        img,
                         nameProduct,
                         price,
                         color,
-                        capacity
+                        capacity,
+                        quantity
                     }
                 }),
                 orderTotal: numberPrice,
-                orderTime: timestamp
+                orderTime: timestamp,
+                note: note
             }
 
-            setDatatoFirebase(order)
-
-            // console.log("order:", order)
-
+            //Dispatch
             dispatch(addOrderToFirestore(order));
             dispatch(deleteCart(cartItems))
 
@@ -110,7 +95,6 @@ function CheckoutPage() {
             setAddress("")
             setPhoneNumber("")
             setNote("")
-
         }
 
 
@@ -121,6 +105,7 @@ function CheckoutPage() {
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
     }, [cartItems])
+
     return (
 
         <>

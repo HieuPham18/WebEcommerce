@@ -65,7 +65,7 @@ function Review() {
                                         <div key={index}>
                                             <div className='post-reivew-item' style={{ display: 'flex', borderRadius: 12, marginRight: 4 }}>
                                                 <div>
-                                                    <img className='image-customer-review' src={post.imgAvt } />
+                                                    <img className='image-customer-review' src={post.imgAvt } alt="" />
                                                 </div>
                                                 <div className='customer-info'>
                                                     <h3 style={{ fontSize: 20, fontWeight: 700, paddingBottom: 12 }}>{post.customer}</h3>

@@ -1,20 +1,22 @@
 
+import { connectFirestoreEmulator } from "firebase/firestore";
+import { addData } from "./order.action";
 import { orderConstant } from "./order.contant";
 const initialState = {
     orders: [],
 };
 export const orderReducer = (state = initialState, action) => {
-    console.log("payloat-order:", action.payload)
-    console.log("state:", state)
     switch (action.type) {
-
         case orderConstant.SET_ORDERS:
+            addData(action.payload)
             return {
                 ...state,
                 orders: [...state.orders, action.payload],
             }
+
         default:
             return state;
     }
 };
-export default orderReducer;
+
+// console.log("orderReducer", orderReducer)

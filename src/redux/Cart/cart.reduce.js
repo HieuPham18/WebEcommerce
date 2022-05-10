@@ -89,9 +89,9 @@ export const cartReducer = (state = initialState, action) => {
 
         case cartConstant.DELETE_CART:
             toast.success('Bạn đã đặt hàng thành công!')
-            setTimeout(() => {
-                window.location.href('/')
-            }, 2000);
+            // setTimeout(() => {
+            //     window.location.href('/')
+            // }, 2000);
             return{
                 ...state,
                 cartItems: [] 

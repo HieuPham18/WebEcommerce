@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import { useUserAuth } from "../context/UserAuthContext";
+import React, { useEffect } from "react";
+// import { ToastContainer, toast } from 'react-toastify';
 import Hotproduct from "../components/Hotproduct";
 import SupportInfo from '../components/SupportInfo'
 import Laptop from "../components/Laptop";
@@ -13,27 +11,25 @@ import Review from "../components/Review";
 import '../stylesheets/base.scss'
 import '../stylesheets/grid.scss'
 import 'react-toastify/dist/ReactToastify.css';
-import Loading from "../components/Loading";
-
-const apiProducts = 'https://webecommerceapi.herokuapp.com/products'
+// import Loading from "../components/Loading";
 
 function HomePage() {
-    const { user, logOut } = useUserAuth();
-    const [data, setData] = useState([])
+    // const { user, logOut } = useUserAuth();
+    // const [data, setData] = useState([])
 
     useEffect(() => {
         window.scrollTo(0, 0)
-      }, [])
-
-    //Get data
-    useEffect(() => {
-        getData()
     }, [])
 
-    const getData = async () => {
-        const reponse = await axios.get(apiProducts)
-        setData(reponse.data)
-    }
+    //Get data
+    // useEffect(() => {
+    //     getData()
+    // }, [])
+
+    // const getData = async () => {
+    //     const reponse = await axios.get(apiProducts)
+    //     setData(reponse.data)
+    // }
 
 
     return (

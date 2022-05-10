@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
-import Slider from "react-slick";
-import { getData, getProductBySlug } from '../data/actionData'
+import { getProductBySlug } from '../data/actionData'
 import { addProductToCart } from "../redux/Cart/cart.action";
 import numberWithCommas from "../utils/numberWithCommas";
 import { dataContext } from "../context/DataContext";
@@ -22,12 +21,12 @@ import 'swiper/css/pagination';
 import '../stylesheets/slide.scss'
 
 function ProductInfoPage() {
+    // const [product, setProduct] = useState([])
+    // // const { category } = useParams();
     const { products } = useContext(dataContext)
-    const [product, setProduct] = useState([])
     const [capacity, setCapacity] = useState("");
     const [color, setColor] = useState("");
     const [quantity, setQuantity] = useState(1);
-    const { category } = useParams();
     const { slug } = useParams();
     const { cartItems } = useSelector(state => state.cartReducer)
     const readMoreElement = useRef()
@@ -42,7 +41,9 @@ function ProductInfoPage() {
     var productInfo = getProductBySlug(products, slug);
 
 
-    const [imgDetal, setImgDetal] = useState('')
+    // const [imgDetal, setImgDetal] = useState('')
+    // const [image, setImage] = useState('')
+
     const imageSilde = useRef()
     const imageUrl = useRef()
 
@@ -55,7 +56,6 @@ function ProductInfoPage() {
         // })
     }
 
-    const [image, setImage] = useState('')
 
     useEffect(() => {
         // read more

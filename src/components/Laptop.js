@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { dataContext } from "../context/DataContext";
 import numberWithCommas from '../utils/numberWithCommas';
 import { getProducts } from "../data/actionData";
@@ -7,9 +7,7 @@ import '../stylesheets/grid.scss';
 import '../stylesheets/base.scss';
 
 function Laptop() {
-    let navigate = useNavigate()
     const {products} = useContext(dataContext)
-
     // const laptops = getProducts(10, products)
 
     return (

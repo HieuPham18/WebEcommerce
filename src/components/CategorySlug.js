@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { getData } from '../data/actionData'
 import numberWithCommas from '../utils/numberWithCommas'
 import { dataContext } from '../context/DataContext'
 import Loading from './Loading'
@@ -40,8 +39,8 @@ function CategorySlug() {
     }
 
 
-    console.log("categories", category)
-    console.log("categorslug", categorySlug)
+    // console.log("categories", category)
+    // console.log("categorslug", categorySlug)
 
 
     return (

@@ -2,14 +2,12 @@ import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 import isEmpty from 'validator/es/lib/isEmpty';
-import isEmail from 'validator/es/lib/isEmail';
 import '../stylesheets/grid.scss'
 import '../stylesheets/base.scss'
 import '../stylesheets/Register.scss'
 import { useUserAuth } from "../context/UserAuthContext"
 import 'react-toastify/dist/ReactToastify.css';
-import Header from "../components/Header";
-import { cartConstant } from '../redux/Cart/cart.contant'
+
 
 
 
@@ -108,7 +106,7 @@ function RegisterPage() {
                                     {
                                         error && <span variant="danger" style={{ color: 'red' }}>{error}</span>
                                     }
-                                    <Link to='/Login' className="link-register">Go to Login</Link>
+                                    <Link to='/login' className="link-register">Go to Login</Link>
                                     {/* <button className="btn button-register" onClick={() => toast.success("Thanh cong r")}>aaaa</button> */}
                                     <ToastContainer position="top-right" />
                                 </div>

@@ -1,54 +1,32 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import { useUserAuth } from '../context/UserAuthContext'
 import { useSelector } from 'react-redux'
-import { getData, getProductBySlug } from '../data/actionData'
+// import { getData } from '../data/actionData'
 import Logo from '../assets/images/logo/logo-text.png'
 import numberWithCommas from '../utils/numberWithCommas'
 import 'react-toastify/dist/ReactToastify.css';
 import '../stylesheets/grid.scss'
 import '../stylesheets/base.scss'
 import '../stylesheets/Header.scss'
+import { dataContext } from '../context/DataContext';
 
 function Header() {
+    // const [laptops, setLaptops] = useState([])
+    // const [phones, setPhones] = useState([])
+    // const [listProduct, setlistProduct] = useState([])
     const [togger, setTogger] = useState(false)
-    const [phones, setPhones] = useState([])
-    const [laptops, setLaptops] = useState([])
-    const [listProduct, setlistProduct] = useState([])
     const [itemSearch, setItemSearch] = useState([])
     const { cartItems } = useSelector(state => state.cartReducer)
     const navigate = useNavigate()
     const { user, logOut } = useUserAuth();
-
-    const collection_phone = "phone"
-    const collection_laptop = "laptop"
-
-    const handleLogOut = async () => {
-        try {
-            await logOut();
-            toast.success("Bạn đã đăng xuất khỏi hệ thống")
-            navigate("/");
-        } catch (error) { }
-    };
-
-    useEffect(() => {
-        // call data
-        getData(setPhones, collection_phone)
-        getData(setLaptops, collection_laptop)
-    }, [])
-
-    useEffect(() => {
-        if (phones !== undefined && laptops !== undefined) {
-            setlistProduct(phones.concat(laptops))
-        }
-    }, [phones, laptops])
+    const {products} = useContext(dataContext)
 
     const handleChange = (e) => {
-        // console.log("bat e:" , typeof e.target.value)
-        if (listProduct !== undefined) {
-            const searchFilter = listProduct.filter(value => {
+        if (products !== undefined) {
+            const searchFilter = products.filter(value => {
                 return value.name.toLowerCase().includes(e.target.value.toLowerCase())
             })
             if (e.target.value === '') {
@@ -60,8 +38,14 @@ function Header() {
             }
         }
     }
-
-    console.log("togger", togger)
+    
+    const handleLogOut = async () => {
+        try {
+            await logOut();
+            toast.success("Bạn đã đăng xuất khỏi hệ thống")
+            navigate("/");
+        } catch (error) { }
+    };
     return (
         <header className="header">
             <nav className="header-navbar hide-on-mobile">
@@ -76,18 +60,18 @@ function Header() {
                                 </li>
                                 <li className="navbar__list-item">
                                     <Link to="" className="navbar__list-link">Kết nối</Link>
-                                    <a href="https://www.facebook.com/hoanghamobilecom" className="navbar-icon--link" target="_blank">
+                                    <Link to="https://www.facebook.com/hoanghamobilecom" className="navbar-icon--link" target="_blank">
                                         <i className="fa-brands fa-facebook"></i>
-                                    </a>
-                                    <a href="https://www.instagram.com/" className="navbar-icon--link">
+                                    </Link>
+                                    <Link to="https://www.instagram.com/" className="navbar-icon--link">
                                         <i className="fa-brands fa-instagram"></i>
-                                    </a>
-                                    <a href="https://www.gmail.com/" className="navbar-icon--link">
+                                    </Link>
+                                    <Link to="https://www.gmail.com/" className="navbar-icon--link">
                                         <i className="fa-solid fa-envelope"></i>
-                                    </a>
-                                    <a href="https://www.youtube.com/" className="navbar-icon--link">
+                                    </Link>
+                                    <Link to="https://www.youtube.com/" className="navbar-icon--link">
                                         <i className="fa-brands fa-youtube"></i>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -118,21 +102,11 @@ function Header() {
                                             user ? (
                                                 <div className="user-info">
                                                     <img src="https://img.lovepik.com/element/40144/0477.png_300.png" style={{
-                                                        verticalAlign: 'middle', width: 20,
+                                                        verticalAlign: 'middle', width: 20, 
                                                         height: 20,
                                                         borderRadius: 50
-                                                    }} />
+                                                    }}  alt=""/>
                                                     <span className="header__user__email" style={{ marginLeft: 3, marginRight: 10, fontSize: 11 }}>{user && user.email}</span>
-                                                    {/* <div></div> */}
-                                                    {/* <span
-                                                        className="header__user__logout"
-                                                        title="Đăng xuất"
-                                                        onClick={handleLogOut}
-                                                        style={{ cursor: 'pointer' }}
-                                                    >
-                                                        <i className="fa-solid fa-right-from-bracket"></i>
-                                                    </span> */}
-
                                                     <ul className="sub-menu-user">
                                                         <li className='sub-menu-user-item'>
                                                             <Link to="/history-order" style={{ textDecoration: 'none', color: '#00483d' }}>Lịch sử đơn hàng</Link>
@@ -188,7 +162,7 @@ function Header() {
                                         onChange={handleChange}
                                     />
                                     {
-                                        itemSearch.length != 0 && (
+                                        itemSearch.length !== 0 && (
                                             <div className="history-search">
                                                 <ul>
                                                     {
@@ -199,7 +173,7 @@ function Header() {
                                                                     className="product-search-item"
                                                                 >
                                                                     <div>
-                                                                        <img style={{ height: 50, }} src={product.imgAvt} />
+                                                                        <img style={{ height: 50, }} src={product.image.imgAvt} alt="" />
                                                                     </div>
                                                                     <Link
                                                                         to={`/${product.category}/${product.categorySlug}/${product.slug}`}
@@ -242,7 +216,7 @@ function Header() {
                                                 return (
                                                     <Link key={index} to={`/${value.productInfo.category}/${value.productInfo.categorySlug}/${value.productInfo.slug}`} className='cart-item-detal' style={{ display: 'flex', textDecoration: 'none' }}>
                                                         <div style={{ padding: '8px 12px' }}>
-                                                            <img src={value.productInfo.image.imgAvt} style={{ height: 46 }} />
+                                                            <img src={value.productInfo.image.imgAvt} style={{ height: 46 }} alt="" />
                                                         </div>
                                                         <div style={{ padding: '8px 0' }}>
                                                             <div style={{ fontSize: 12, fontWeight: 500, color: '#333' }}>{value.productInfo.name}</div>
@@ -276,7 +250,7 @@ function Header() {
                                     />
 
                                     {
-                                        itemSearch.length != 0 && (
+                                        itemSearch.length !== 0 && (
                                             <div className="history-search">
                                                 <ul>
                                                     {
@@ -287,7 +261,7 @@ function Header() {
                                                                     className="product-search-item"
                                                                 >
                                                                     <div>
-                                                                        <img style={{ height: 50, }} src={product.imgAvt} />
+                                                                        <img style={{ height: 50, }} src={product.imgAvt} alt="" />
                                                                     </div>
                                                                     <Link
                                                                         to={`/${product.category}/${product.categorySlug}/${product.slug}`}
@@ -1013,40 +987,40 @@ function Header() {
                                     {/* <!-- About --> */}
                                     <ul className="sub-menu-mobile-about__list">
                                         <li className="sub-menu-mobile-about__item">
-                                            <a href="" className="sub-menu-mobile__item-link">
+                                            <NavLink href="" className="sub-menu-mobile__item-link">
                                                 <i className="fa-solid fa-address-card sub-menu-icon-about"></i>
                                                 <span className="icon-menu-name-about">Giới thiệu</span>
-                                            </a>
+                                            </NavLink>
                                         </li>
                                         <li className="sub-menu-mobile-about__item">
-                                            <a href="" className="sub-menu-mobile__item-link">
+                                            <Link to="" className="sub-menu-mobile__item-link">
                                                 <i className="fa-solid fa-eye sub-menu-icon-about"></i>
                                                 <span className="icon-menu-name-about">Sản phẩm đã xem</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li className="sub-menu-mobile-about__item">
-                                            <a href="" className="sub-menu-mobile__item-link">
+                                            <Link to="" className="sub-menu-mobile__item-link">
                                                 <i className="fa-solid fa-check-to-slot sub-menu-icon-about"></i>
                                                 <span className="icon-menu-name-about">Trung tâm bảo hành</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li className="sub-menu-mobile-about__item">
-                                            <a href="" className="sub-menu-mobile__item-link">
+                                            <Link to="" className="sub-menu-mobile__item-link">
                                                 <i className="fa-solid fa-location-dot sub-menu-icon-about"></i>
                                                 <span className="icon-menu-name-about">Hệ thông siêu thị</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li className="sub-menu-mobile-about__item">
-                                            <a href="" className="sub-menu-mobile__item-link">
+                                            <Link to="" className="sub-menu-mobile__item-link">
                                                 <i className="fa-solid fa-phone-volume sub-menu-icon-about"></i>
                                                 <span className="icon-menu-name-about">Tuyển dụng</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li className="sub-menu-mobile-about__item">
-                                            <a href="" className="sub-menu-mobile__item-link">
+                                            <Link to="" className="sub-menu-mobile__item-link">
                                                 <i className="fa-solid fa-truck-fast sub-menu-icon-about"></i>
                                                 <span className="icon-menu-name-about">Tra cứu đơn hàng</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                     </ul>
                                 </div>

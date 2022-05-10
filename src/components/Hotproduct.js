@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { dataContext } from "../context/DataContext";
 import numberWithCommas from '../utils/numberWithCommas'
 import '../stylesheets/grid.scss'
@@ -10,7 +10,6 @@ function Hotproducts() {
    
     const {products} = useContext(dataContext)
     // const phones = getProducts(10, hotPhones)
-
 
     return (
         <section className="product-hot">
