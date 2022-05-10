@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import { useUserAuth } from '../context/UserAuthContext'
 import { useSelector } from 'react-redux'
-// import { getData } from '../data/actionData'
 import Logo from '../assets/images/logo/logo-text.png'
 import numberWithCommas from '../utils/numberWithCommas'
 import 'react-toastify/dist/ReactToastify.css';
@@ -22,7 +21,7 @@ function Header() {
     const { cartItems } = useSelector(state => state.cartReducer)
     const navigate = useNavigate()
     const { user, logOut } = useUserAuth();
-    const {products} = useContext(dataContext)
+    const { products } = useContext(dataContext)
 
     const handleChange = (e) => {
         if (products !== undefined) {
@@ -38,7 +37,15 @@ function Header() {
             }
         }
     }
-    
+
+    const handleOpenMenuMobile = () => {
+        setTogger(true)
+    }
+
+    const handleCloseMenuMobile = () => {
+        setTogger(false)
+    }
+
     const handleLogOut = async () => {
         try {
             await logOut();
@@ -46,6 +53,7 @@ function Header() {
             navigate("/");
         } catch (error) { }
     };
+
     return (
         <header className="header">
             <nav className="header-navbar hide-on-mobile">
@@ -79,7 +87,7 @@ function Header() {
                         <div className="col l-8 m-8">
                             <ul className="navbar__list  navbar__list--right">
                                 <li className="navbar__list-item">
-                                    <Link to="" href="#" className="navbar__list-link">Thông báo</Link>
+                                    <Link to="" className="navbar__list-link">Thông báo</Link>
                                     <div className="navbar-notify">
                                         <h1 className="navbar-notify-heading">Thông báo mới nhất</h1>
                                         <div className="not-notify">
@@ -102,10 +110,10 @@ function Header() {
                                             user ? (
                                                 <div className="user-info">
                                                     <img src="https://img.lovepik.com/element/40144/0477.png_300.png" style={{
-                                                        verticalAlign: 'middle', width: 20, 
+                                                        verticalAlign: 'middle', width: 20,
                                                         height: 20,
                                                         borderRadius: 50
-                                                    }}  alt=""/>
+                                                    }} alt="" />
                                                     <span className="header__user__email" style={{ marginLeft: 3, marginRight: 10, fontSize: 11 }}>{user && user.email}</span>
                                                     <ul className="sub-menu-user">
                                                         <li className='sub-menu-user-item'>
@@ -133,7 +141,7 @@ function Header() {
                     <div className="row" style={{ alignItems: 'center' }}>
                         {/* <!-- Start Menu mobile --> */}
                         <div className='col c-3 hide-on-tablet hide-on-pc'>
-                            <div onClick={() => setTogger(true)} id="togger" className="mobile-menu hide-on-tablet">
+                            <div onClick={handleOpenMenuMobile} id="togger" className="mobile-menu hide-on-tablet">
                                 <i className="fa-solid fa-bars mobile_menu-icon"></i>
                             </div>
                         </div>
@@ -202,7 +210,7 @@ function Header() {
                         </div>
                         <div className="col l-2 c-3">
                             <div className="header__cart">
-                                <Link to="/cart" href="">
+                                <Link to="/cart">
                                     <i className="fa-solid fa-cart-arrow-down icon-cart"></i>
                                 </Link>
                                 <span className="header__cart-number-product">{cartItems.length}</span>
@@ -225,7 +233,7 @@ function Header() {
                                                     </Link>
                                                 )
                                             })
-                                          }
+                                        }
                                     </ul>
                                     <div style={{ marginTop: 8, display: 'flex', justifyContent: 'space-between', padding: '0 12px', alignItems: 'center' }}>
                                         <p>({cartItems.length} sản phẩm): </p>
@@ -241,12 +249,12 @@ function Header() {
                         <div className='col c-12'>
                             <div className="header-search-moblie hide-on-tablet" >
                                 <div className="header__input-search-warp">
-                                    <input 
-                                    type="text" 
-                                    placeholder="Nhập sản phẩm cần tìm kiếm.." 
-                                    className="header__search-input" 
-                                    style={{ width: '80%' }} 
-                                    onChange={handleChange}
+                                    <input
+                                        type="text"
+                                        placeholder="Nhập sản phẩm cần tìm kiếm.."
+                                        className="header__search-input"
+                                        style={{ width: '80%' }}
+                                        onChange={handleChange}
                                     />
 
                                     {
@@ -265,7 +273,7 @@ function Header() {
                                                                     </div>
                                                                     <Link
                                                                         to={`/${product.category}/${product.categorySlug}/${product.slug}`}
-                                                                        style={{ marginLeft: 15, cursor: 'pointer', textDecoration: 'none', textAlign: 'left'}}>
+                                                                        style={{ marginLeft: 15, cursor: 'pointer', textDecoration: 'none', textAlign: 'left' }}>
                                                                         <div className="product-search-item--name">
                                                                             {product.name}
                                                                         </div>
@@ -298,13 +306,13 @@ function Header() {
                     {/* Menu laptop tablet */}
                     <ul className="header__menu-list hide-on-mobile ">
                         <Link to="/" className="header__menu-item">
-                            <div href="" className="header__menu-item-link">
+                            <div className="header__menu-item-link">
                                 <i className="fa-solid fa-house icon-menu"></i>
                                 <span className="icon-menu-name">Trang chủ</span>
                             </div>
                         </Link>
                         <Link to="/dien-thoai-di-dong" className="header__menu-item">
-                            <div href="" className="header__menu-item-link">
+                            <div className="header__menu-item-link">
                                 <i className="fa-solid fa-mobile-button icon-menu"></i>
                                 <span className="icon-menu-name">Điện thoại</span>
                             </div>
@@ -319,52 +327,52 @@ function Header() {
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/dien-thoai-di-dong/xiaomi" href="" className="manufactor-name">
+                                                <Link to="/dien-thoai-di-dong/xiaomi" className="manufactor-name">
                                                     Xiaomi
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/dien-thoai-di-dong/oppo" href="" className="manufactor-name">
+                                                <Link to="/dien-thoai-di-dong/oppo" className="manufactor-name">
                                                     OPPO
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/dien-thoai-di-dong/samsung" href="" className="manufactor-name">
+                                                <Link to="/dien-thoai-di-dong/samsung" className="manufactor-name">
                                                     SamSung
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/dien-thoai-di-dong/vivo" href="" className="manufactor-name">
+                                                <Link to="/dien-thoai-di-dong/vivo" className="manufactor-name">
                                                     Vivo
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/dien-thoai-di-dong/huawei" href="" className="manufactor-name">
+                                                <Link to="/dien-thoai-di-dong/huawei" className="manufactor-name">
                                                     Huawei
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/dien-thoai-di-dong/" href="" className="manufactor-name">
+                                                <Link to="/dien-thoai-di-dong/" className="manufactor-name">
                                                     SamSung1
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/dien-thoai-di-dong/realme" href="" className="manufactor-name">
+                                                <Link to="/dien-thoai-di-dong/realme" className="manufactor-name">
                                                     realme
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/dien-thoai-di-dong/nokia" href="" className="manufactor-name">
+                                                <Link to="/dien-thoai-di-dong/nokia" className="manufactor-name">
                                                     Nokia
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     BPhone
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/dien-thoai-di-dong/vsmart" href="" className="manufactor-name">
+                                                <Link to="/dien-thoai-di-dong/vsmart" className="manufactor-name">
                                                     Vsmart
                                                 </Link>
                                             </li>
@@ -374,27 +382,27 @@ function Header() {
                                         <h2 className="algin-left">Mức giá</h2>
                                         <ul className="price__list">
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 2 đến 3 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 3 đến 5 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 5 đến 10 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 10 đến 20 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Trên 20 triệu
                                                 </Link>
                                             </li>
@@ -404,17 +412,17 @@ function Header() {
                                         <h2 className="algin-left">Quan tâm</h2>
                                         <ul className="care__list">
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Hôm nay
                                                 </Link>
                                             </li>
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Tuần này
                                                 </Link>
                                             </li>
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Tháng này
                                                 </Link>
                                             </li>
@@ -426,7 +434,7 @@ function Header() {
                             </div>
                         </Link>
                         <Link to="/lap-top" className="header__menu-item">
-                            <div href="" className="header__menu-item-link">
+                            <div className="header__menu-item-link">
                                 <i className="fa-solid fa-laptop-code icon-menu"></i>
                                 <span className="icon-menu-name">Laptop</span>
                             </div>
@@ -441,37 +449,37 @@ function Header() {
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/lap-top/xiaomi" href="" className="manufactor-name">
+                                                <Link to="/lap-top/xiaomi" className="manufactor-name">
                                                     Xiaomi
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/lap-top/oppo" href="" className="manufactor-name">
+                                                <Link to="/lap-top/oppo" className="manufactor-name">
                                                     OPPO
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/lap-top/samsung" href="" className="manufactor-name">
+                                                <Link to="/lap-top/samsung" className="manufactor-name">
                                                     SamSung
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/lap-top/dell" href="" className="manufactor-name">
+                                                <Link to="/lap-top/dell" className="manufactor-name">
                                                     DELL
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/lap-top/asus" href="" className="manufactor-name">
+                                                <Link to="/lap-top/asus" className="manufactor-name">
                                                     Asus
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/lap-top/lenovo" href="" className="manufactor-name">
+                                                <Link to="/lap-top/lenovo" className="manufactor-name">
                                                     Lenovo
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="/lap-top/hp" href="" className="manufactor-name">
+                                                <Link to="/lap-top/hp" className="manufactor-name">
                                                     HP
                                                 </Link>
                                             </li>
@@ -481,27 +489,27 @@ function Header() {
                                         <h2 className="algin-left">Mức giá</h2>
                                         <ul className="price__list">
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 2 đến 3 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 3 đến 5 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 5 đến 10 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 10 đến 20 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Trên 20 triệu
                                                 </Link>
                                             </li>
@@ -511,17 +519,17 @@ function Header() {
                                         <h2 className="algin-left">Quan tâm</h2>
                                         <ul className="care__list">
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Hôm nay
                                                 </Link>
                                             </li>
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Tuần này
                                                 </Link>
                                             </li>
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Tháng này
                                                 </Link>
                                             </li>
@@ -533,7 +541,7 @@ function Header() {
                             </div>
                         </Link>
                         <Link to="/tablet" className="header__menu-item">
-                            <div href="" className="header__menu-item-link">
+                            <div className="header__menu-item-link">
                                 <i className="fa-solid fa-tablet icon-menu"></i>
                                 <span className="icon-menu-name">Tablet</span>
                             </div>
@@ -543,57 +551,57 @@ function Header() {
                                         <h2 className="algin-left">Hãng sản xuất</h2>
                                         <ul className="manufactor__list">
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Apple
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Xiaomi
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     OPPO
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     SamSung
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     DELL
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Asus
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Lenovo
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     HP
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Nokia
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     BPhone
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Vsmart
                                                 </Link>
                                             </li>
@@ -603,27 +611,27 @@ function Header() {
                                         <h2 >Mức giá</h2>
                                         <ul className="price__list">
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 2 đến 3 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 3 đến 5 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 5 đến 10 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 10 đến 20 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Trên 20 triệu
                                                 </Link>
                                             </li>
@@ -633,17 +641,17 @@ function Header() {
                                         <h2 className="align-left">Quan tâm</h2>
                                         <ul className="care__list">
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Hôm nay
                                                 </Link>
                                             </li>
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Tuần này
                                                 </Link>
                                             </li>
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Tháng này
                                                 </Link>
                                             </li>
@@ -655,7 +663,7 @@ function Header() {
                             </div>
                         </Link>
                         <Link to="/watch" className="header__menu-item">
-                            <div href="" className="header__menu-item-link">
+                            <div className="header__menu-item-link">
                                 <i className="fa-solid fa-clock icon-menu"></i>
                                 <span className="icon-menu-name">Đồng hồ</span>
                             </div>
@@ -665,52 +673,52 @@ function Header() {
                                         <h2 className="align-left">Hãng sản xuất</h2>
                                         <ul className="manufactor__list">
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Apple Watch
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Xiaomi
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     OPPO
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     SamSung
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Masstel
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Fitbit
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Tic Watch
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     HP
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Đồng hồ trẻ em
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     BPhone
                                                 </Link>
                                             </li>
@@ -720,27 +728,27 @@ function Header() {
                                         <h2 >Mức giá</h2>
                                         <ul className="price__list">
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 2 đến 3 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 3 đến 5 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 5 đến 10 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 10 đến 20 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Trên 20 triệu
                                                 </Link>
                                             </li>
@@ -750,17 +758,17 @@ function Header() {
                                         <h2 >Quan tâm</h2>
                                         <ul className="care__list">
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Hôm nay
                                                 </Link>
                                             </li>
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Tuần này
                                                 </Link>
                                             </li>
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Tháng này
                                                 </Link>
                                             </li>
@@ -772,7 +780,7 @@ function Header() {
                             </div>
                         </Link>
                         <Link to="/head-phone" className="header__menu-item">
-                            <div href="" className="header__menu-item-link">
+                            <div className="header__menu-item-link">
                                 <i className="fa-solid fa-headphones icon-menu"></i>
                                 <span className="icon-menu-name">Tai nghe</span>
                             </div>
@@ -782,67 +790,67 @@ function Header() {
                                         <h2 className="align-left">Hãng sản xuất</h2>
                                         <ul className="manufactor__list">
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Apple
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Xiaomi
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     OPPO
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     SamSung
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Vivo
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Huawei
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     AKG
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     realme
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Nokia
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     BPhone
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     Sennheiser
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     LG
                                                 </Link>
                                             </li>
                                             <li className="manufactor__item">
-                                                <Link to="" href="" className="manufactor-name">
+                                                <Link to="" className="manufactor-name">
                                                     JBL
                                                 </Link>
                                             </li>
@@ -853,27 +861,27 @@ function Header() {
                                         <h2 className="align-left">Mức giá</h2>
                                         <ul className="price__list">
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 2 đến 3 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 3 đến 5 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 5 đến 10 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Từ 10 đến 20 triệu
                                                 </Link>
                                             </li>
                                             <li className="price__item">
-                                                <Link to="" href="" className="price-name">
+                                                <Link to="" className="price-name">
                                                     Trên 20 triệu
                                                 </Link>
                                             </li>
@@ -883,17 +891,17 @@ function Header() {
                                         <h2 className="align-left">Quan tâm</h2>
                                         <ul className="care__list">
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Hôm nay
                                                 </Link>
                                             </li>
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Tuần này
                                                 </Link>
                                             </li>
                                             <li className="care__item">
-                                                <Link to="" href="" className="care-name">
+                                                <Link to="" className="care-name">
                                                     Tháng này
                                                 </Link>
                                             </li>
@@ -905,13 +913,13 @@ function Header() {
                             </div>
                         </Link>
                         <Link to="#" className="header__menu-item ">
-                            <div href="" className="header__menu-item-link">
+                            <div className="header__menu-item-link">
                                 <i className="fa-solid fa-bolt-lightning icon-menu"></i>
                                 <span className="icon-menu-name">FLAST SALE</span>
                             </div>
                         </Link>
                         <Link to="#" className="header__menu-item hide-on-tablet">
-                            <div href="https://hoanghamobile.com/tin-tuc/" className="header__menu-item-link">
+                            <div className="header__menu-item-link">
                                 <i className="fa-solid fa-newspaper icon-menu"></i>
                                 <span className="icon-menu-name">Tin tức</span>
                             </div>
@@ -920,7 +928,6 @@ function Header() {
                     {/* <!-- Menu sub menu moblie --> */}
                     {
                         togger && (
-
                             <div className="modal-menu-mobile hide-on-pc">
                                 <div className="sub-menu-mobile">
                                     <div className="login-sub-menu">
@@ -930,18 +937,18 @@ function Header() {
                                             <p style={{ fontStyle: 'italic' }}>Đăng nhập để nhận thêm nhiều ưu đãi</p>
                                         </div>
                                     </div>
-                                    <div className="close-sub-menu-mobile" onClick={() => setTogger(false)}>
+                                    <div className="close-sub-menu-mobile" onClick={handleCloseMenuMobile}>
                                         <i className="fa-solid fa-xmark icon-close-sub-menu"></i>
                                     </div>
-                                    <ul className="sub-menu-mobile__list">
+                                    <ul className="sub-menu-mobile__list" onClick={handleCloseMenuMobile}>
                                         <li className="sub-menu-mobile__item">
-                                            <Link to="/" className="sub-menu-mobile__item-link" onClick={() => setTogger(false)}>
+                                            <Link to="/" className="sub-menu-mobile__item-link" onClick={handleCloseMenuMobile}>
                                                 <i className="fa-solid fa-house sub-menu-icon"></i>
                                                 <span className="icon-sub-menu-name">Trang chủ</span>
                                             </Link>
                                         </li>
                                         <li className="sub-menu-mobile__item">
-                                            <Link to="/dien-thoai-di-dong" className="sub-menu-mobile__item-link" onClick={() => setTogger(false)}>
+                                            <Link to="/dien-thoai-di-dong" className="sub-menu-mobile__item-link" >
                                                 <i className="fa-solid fa-mobile-button sub-menu-icon"></i>
                                                 <span className="icon-sub-menu-name">Điện thoại</span>
                                             </Link>
@@ -970,27 +977,14 @@ function Header() {
                                                 <span className="icon-sub-menu-name">Sửa chữa</span>
                                             </Link>
                                         </li>
-
                                     </ul>
-                                    {/* <script>
-                                            var toggerMenu = document.querySelector("#togger");
-                                            // console.log(opacity 2s linear);
-                                            toggerMenu.addEventListener("click", function () {
-                                                document.querySelector(".modal").style.display = "block";
-                                                document.querySelector(".modal").style.animation = "modalFadeIn ease 0.2s";
-                                                // document.querySelector(".sub-menu-mobile").style.transition = "all 1s ease-in-out";
-                                            })
-                                            document.querySelector(".close-sub-menu-mobile").addEventListener("click", function () {
-                                                document.querySelector(".modal").style.display = "none";
-                                            })
-                                        </script> */}
                                     {/* <!-- About --> */}
                                     <ul className="sub-menu-mobile-about__list">
                                         <li className="sub-menu-mobile-about__item">
-                                            <NavLink href="" className="sub-menu-mobile__item-link">
+                                            <Link to="" className="sub-menu-mobile__item-link">
                                                 <i className="fa-solid fa-address-card sub-menu-icon-about"></i>
                                                 <span className="icon-menu-name-about">Giới thiệu</span>
-                                            </NavLink>
+                                            </Link>
                                         </li>
                                         <li className="sub-menu-mobile-about__item">
                                             <Link to="" className="sub-menu-mobile__item-link">
@@ -1025,7 +1019,6 @@ function Header() {
                                     </ul>
                                 </div>
                             </div>
-
                         )
                     }
                     {/* <!-- Menu on moblie --> */}

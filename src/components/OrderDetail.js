@@ -70,52 +70,49 @@ function OrderDetal({ closeOrder, historyOrder, idOrder }) {
                             {
                                 rsOrder !== undefined && rsOrder.orderItem.map((value, index) => {
                                     return (
-                                        <>
-                                            <tr key={index}>
-                                                {/* <td ><img style={{ height: 60 }} src={value.img} alt="" /></td> */}
-                                                <td style={{ fontSize: 13, padding: 6 }}>{index + 1}</td>
-                                                <td style={{ fontSize: 13, padding: 6, textAlign: 'left' }}>{value.nameProduct}</td>
-                                                <td style={{ fontSize: 13, padding: 6 }}>{value.color}</td>
-                                                <td style={{ fontSize: 13, padding: 6 }}>{value.capacity}</td>
-                                                <td style={{ fontSize: 13, padding: 6 }}>{numberWithCommas(value.price)}</td>
-                                                <td style={{ fontSize: 13, padding: 6 }}>{value.quantity}</td>
-                                                <td style={{ fontSize: 13, padding: 6 }}>{numberWithCommas(value.price * value.quantity)}</td>
-                                            </tr>
-
-                                        </>
+                                        <tr key={index}>
+                                            {/* <td ><img style={{ height: 60 }} src={value.img} alt="" /></td> */}
+                                            <td style={{ fontSize: 13, padding: 6 }}>{index + 1}</td>
+                                            <td style={{ fontSize: 13, padding: 6, textAlign: 'left' }}>{value.nameProduct}</td>
+                                            <td style={{ fontSize: 13, padding: 6 }}>{value.color}</td>
+                                            <td style={{ fontSize: 13, padding: 6 }}>{value.capacity}</td>
+                                            <td style={{ fontSize: 13, padding: 6 }}>{numberWithCommas(value.price)}</td>
+                                            <td style={{ fontSize: 13, padding: 6 }}>{value.quantity}</td>
+                                            <td style={{ fontSize: 13, padding: 6 }}>{numberWithCommas(value.price * value.quantity)}</td>
+                                        </tr>
                                     )
                                 })
                             }
                             <tr>
-                                <td style={{ fontSize: 13, padding: 8, textAlign: "right", fontWeight: 'bold' }} colspan="5">Tổng cộng tiền hàng: </td>
-                                <td style={{ fontSize: 13, padding: 8 }} colspan="5">
+                                <td style={{ fontSize: 13, padding: 8, textAlign: "right", fontWeight: 'bold' }} colSpan="5">Tổng cộng tiền hàng: </td>
+                                <td style={{ fontSize: 13, padding: 8 }} colSpan="5">
                                     {
                                         rsOrder !== undefined && <span>{numberWithCommas(rsOrder.orderTotal)}</span>
                                     }
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="5" style={{ fontSize: 13, padding: 8, textAlign: "right", fontWeight: 'bold' }}>
+                                <td colSpan="5" style={{ fontSize: 13, padding: 8, textAlign: "right", fontWeight: 'bold' }}>
                                     <span>Thuế suất GTGT(VAT)</span>
                                     <span> - </span>
                                     <span>Tổng tiền thuế GTGT(10%):</span>
                                 </td>
-                                <td colspan="2" style={{ fontSize: 13, padding: 8 }}>
+                                <td colSpan="2" style={{ fontSize: 13, padding: 8 }}>
                                     {
                                         rsOrder !== undefined && <span>{numberWithCommas(rsOrder.orderTotal * 0.1)}</span>
                                     }
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="5" style={{ fontSize: 13, padding: 8, textAlign: "right", fontWeight: 'bold' }}>Tổng tiền thanh toán: </td>
-                                <td colspan="2" style={{ fontSize: 13, padding: 8 }}>
+                                <td colSpan="5" style={{ fontSize: 13, padding: 8, textAlign: "right", fontWeight: 'bold' }}>Tổng tiền thanh toán: </td>
+                                <td colSpan="2" style={{ fontSize: 13, padding: 8 }}>
                                     {
                                         rsOrder !== undefined && <span>{numberWithCommas(rsOrder.orderTotal + rsOrder.orderTotal * 0.1)}</span>
                                     }
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="7" style={{ fontSize: 13, padding: 8, textAlign: "left" }}>Số tiền bằng chữ:
+                                <td colSpan="7" style={{ fontSize: 13, padding: 8, textAlign: "left" }}>Số tiền bằng chữ:
                                     {
                                         rsOrder !== undefined && <span style={{ fontWeight: "bold" }}>{coverNumbertoString.doc(parseInt(rsOrder.orderTotal + rsOrder.orderTotal * 0.1))} đồng</span>
                                     }
