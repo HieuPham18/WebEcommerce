@@ -76,8 +76,8 @@ function AdminOrders({ searchProduct, title }) {
                 </thead>
                 <tbody>
                     {
-                        historyOrder !== undefined && historyOrder.map(value => {
-                            
+                        // historyOrder !== undefined && historyOrder.map(value => {
+                        historyOrder !== undefined && historyOrder.sort((a, b) => b.orderTime - a.orderTime).map(value => {
                             return (
                                 <tr key={value.id}>
                                     <td>{value.id}</td>
