@@ -977,6 +977,12 @@ function Header() {
                                                 <span className="icon-sub-menu-name">Sửa chữa</span>
                                             </Link>
                                         </li>
+                                        <li className="sub-menu-mobile__item">
+                                            <Link to="/history-order" className="sub-menu-mobile__item-link">
+                                                <i class="fa-solid fa-file-waveform sub-menu-icon"></i>
+                                                <span className="icon-sub-menu-name">Lịch sử đơn hàng</span>
+                                            </Link>
+                                        </li>
                                     </ul>
                                     {/* <!-- About --> */}
                                     <ul className="sub-menu-mobile-about__list">

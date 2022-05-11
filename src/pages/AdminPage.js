@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect } from "react"
+import React, { useState } from "react"
 import { Link, useNavigate, useParams, useLocation } from "react-router-dom"// Import
 import { useUserAuth } from "../context/UserAuthContext"
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
@@ -135,7 +135,7 @@ function AdminPage() {
                             {/* Component  */}
                             <div style={{ padding: '0px 12px', height: '91vh', overflow: 'auto', position: 'relative' }}>
                                 {
-                                    location && location.pathname === '/admin' ? <AdminDashBoad title='dashboad' />
+                                    location && location.pathname === '/admin/' ? <AdminDashBoad title='dashboad' />
                                         :
                                         slugAdmin && slugAdmin === 'products'
                                             ?

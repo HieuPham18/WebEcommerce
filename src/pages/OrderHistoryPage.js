@@ -31,34 +31,41 @@ function OrderHistoryPage() {
                     <div className='row'>
                         <div className='col l-12 m-12 c-12'>
                             <h2 style={{ textAlign: 'center', padding: '16px 0' }}>Lịch sử mua hàng</h2>
-                            <table className="styled-table" style={{ width: "100%" }}>
-                                <thead>
-                                    <tr>
-                                        <th>ID Đơn hàng</th>
-                                        <th>Người nhận</th>
-                                        <th>Thời gian</th>
-                                        <th>Địa chỉ</th>
-                                        <th>Tổng tiền</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        historyOrder !== undefined && user !== null && historyOrder.filter(item => item.orderUserID === user.uid).map(value => {
-                                            return (
-                                                <tr key={value.id}>
-                                                    <td>{value.id}</td>
-                                                    <td>{value.name}</td>
-                                                    <td>
-                                                        {moment(value.orderTime.toDate()).format("DD/MM/YYYY hh:mm:ss a")}
-                                                    </td>
-                                                    <td>{value.address}</td>
-                                                    <td>{numberWithCommas(value.orderTotal)} đ</td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                            </table>
+                            <div style={{width: '100%', overflow: 'auto'}}>
+                                <div className="list-order">
+                                    <table className="styled-table" style={{ width: "100%" }}>
+                                        <thead>
+                                            <tr>
+                                                <th>ID Đơn hàng</th>
+                                                <th>Người nhận</th>
+                                                <th>Thời gian</th>
+                                                <th>Địa chỉ</th>
+                                                <th>Tổng tiền</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                historyOrder !== undefined && user !== null && historyOrder
+                                                    .filter(item => item.orderUserID === user.uid)
+                                                    .sort((a, b) => b.orderTime - a.orderTime)
+                                                    .map(value => {
+                                                        return (
+                                                            <tr key={value.id}>
+                                                                <td>{value.id}</td>
+                                                                <td>{value.name}</td>
+                                                                <td>
+                                                                    {moment(value.orderTime.toDate()).format("DD/MM/YYYY hh:mm:ss a")}
+                                                                </td>
+                                                                <td>{value.address}</td>
+                                                                <td>{numberWithCommas(value.orderTotal)} đ</td>
+                                                            </tr>
+                                                        )
+                                                    })
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
