@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react" // Import
+import React, {useEffect, useState } from "react" // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import numberWithCommas from "../utils/numberWithCommas"
 import Logo from '../assets/images/logo/logo-text.png'
@@ -10,12 +10,14 @@ import CloseIcon from '@mui/icons-material/Close';
 
 function OrderDetal({ closeOrder, historyOrder, idOrder }) {
     const [rsOrder, setRsOrder] = useState()
+
     useEffect(() => {
         if (historyOrder.length > 0) {
             const rs = historyOrder.find(item => item.id === idOrder)
             setRsOrder(rs)
         }
-    }, [idOrder])
+    }, [idOrder, historyOrder])
+
     return (
         <div className="order-detal">
             <div className="order-container">

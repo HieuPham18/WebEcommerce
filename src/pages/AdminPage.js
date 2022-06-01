@@ -135,7 +135,7 @@ function AdminPage() {
                             {/* Component  */}
                             <div style={{ padding: '0px 12px', height: '91vh', overflow: 'auto', position: 'relative' }}>
                                 {
-                                    location && location.pathname === '/admin/' ? <AdminDashBoad title='dashboad' />
+                                    location && (location.pathname === '/admin' || location.pathname === '/admin/') ? <AdminDashBoad title='dashboad' />
                                         :
                                         slugAdmin && slugAdmin === 'products'
                                             ?
